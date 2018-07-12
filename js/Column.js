@@ -18,25 +18,12 @@ function Column(id, name) {
 			self.deleteColumn();
 		});
 		
-		$columnAddCard.click(function(event) {
-			var cardName = prompt("Enter the name of the card");
-			event.preventDefault();
-			self.createCard(new Card(cardName));
-		});
-			
-			// KONSTRUOWANIE ELEMENTU KOLUMNY
-		column.append(columnTitle)
-			.append(columnDelete)
-			.append(columnAddCard)
-			.append(columnCardList);
-			return column;
-	}
-}
-
-$columnAddCard.click(function(event) {	
+		columnAddCard.click(function(event) {	
 	var cardName = prompt("Enter the name of the card");
 	event.preventDefault();
-	var self = this;	
+	/*var self = this;	*/
+	console.log(this)
+	console.log(self)
 	$.ajax({
     url: baseUrl + '/card',
     method: 'POST',
@@ -49,7 +36,17 @@ $columnAddCard.click(function(event) {
         self.createCard(card);
 		}
 	});	
-});
+});			
+			// KONSTRUOWANIE ELEMENTU KOLUMNY
+		column.append(columnTitle)
+			.append(columnDelete)
+			.append(columnAddCard)
+			.append(columnCardList);
+			return column;
+	}
+}
+
+
 
 	
 Column.prototype = {

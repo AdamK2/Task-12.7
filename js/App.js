@@ -4,6 +4,10 @@ var myHeaders = {
   'X-Auth-Token': 'ce0fd06f05ad3cb5d349003a4193a01d'
 };
 
+$.ajaxSetup({
+	headers: myHeaders
+})
+
 $.ajax({
     url: baseUrl + '/board',
     method: 'GET',
@@ -15,6 +19,7 @@ $.ajax({
 function setupColumns(columns) {
     columns.forEach(function (column) {
   		var col = new Column(column.id, column.name);
+		console.log(column)	
         board.createColumn(col);
     });
 }
@@ -25,4 +30,3 @@ function setupCards(col, cards) {
     	col.createCard(cardObj);
   	})
 }
-
